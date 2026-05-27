@@ -1,0 +1,223 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #2b4461; /* Azul del fondo exterior */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    padding: 40px 20px;
+    position: relative;
+    overflow-x: hidden;
+
+    /* Patrón sutil repetitivo: Crea pequeños puntos de luz distribuidos uniformemente */
+    background-image: 
+        radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+        radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+}
+
+/* Aseguramos que la tarjeta quede por encima del fondo del body */
+.tarjeta {
+    width: 360px;
+    background-color: #3b534d; /* Verde oscuro */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2; /* Levanta la tarjeta sobre las líneas del fondo */
+    clip-path: polygon(0% 8%, 50% 4%, 100% 8%, 100% 100%, 0% 100%);
+}
+
+/* Sección de la imagen superior */
+.header-imagen {
+    width: 100%;
+    height: 250px; /* Incrementado para compensar el recorte superior */
+    position: relative;
+    background-color: #fff;
+    /* Ajusta el contenido interno para que empiece un poco más abajo por el corte */
+    padding-top: 30px; 
+}
+
+/* Imagen del llavero */
+.header-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Contenedor del Logo Circular */
+.logo-container {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 135px;
+    height: 135px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 10;
+    padding: 14px; /* Un poco más de espacio interno para que el logo respire */
+    border: 2px solid #2b4461;
+}
+
+/* Estilos para que la imagen del logo se adapte perfectamente */
+.logo-real {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Evita que el logo se deforme o se estire */
+    display: block;
+}
+
+/* Cuerpo del contenido */
+.contenido {
+    width: 100%;
+    padding: 70px 25px 30px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Título Principal */
+.titulo {
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.divisor {
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+/* Lista de Servicios */
+.servicios-lista {
+    width: 100%;
+    list-style: none;
+    margin-bottom: 15px;
+    
+    /* Activamos flexbox para centrar todo el bloque de la lista */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.servicios-lista li {
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    
+    /* Alineación interna de cada ítem */
+    display: flex;
+    align-items: center;
+    text-align: left; /* El texto se mantiene ordenado hacia la izquierda */
+    width: 100%;
+    max-width: 290px; /* Forzamos un ancho máximo para que el bloque no se estire y se note el centrado */
+}
+
+/* Punto blanco de la lista */
+.servicios-lista li::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+/* Sección de Contacto */
+.seccion-contacto {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subtitulo-contacto {
+    color: #ffffff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+/* Grid de Redes/Datos */
+.contacto-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Crea 2 columnas iguales */
+    gap: 20px 10px; /* 20px de espacio entre filas y 10px entre columnas */
+    text-align: center;
+}
+
+/* Asegura que las cajas de enlace no tengan estilos de texto genéricos */
+.contacto-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 5px; /* Pequeño espacio interno para mejor respuesta al tacto */
+}
+
+/* Fuerza a los iconos y textos a mantener el color blanco */
+.contacto-item i, 
+.contacto-item span {
+    color: #ffffff;
+}
+
+/* Caja contenedora para forzar que todos los iconos midan lo mismo */
+.contacto-item i {
+    font-size: 38px;
+    margin-bottom: 12px;
+    transition: transform 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+}
+
+/* Efecto visual cuando pasas el dedo o el mouse por encima de todo el botón */
+.contacto-item:hover i {
+    transform: scale(1.1);
+}
+
+/* Texto de contacto */
+.contacto-item span {
+    font-family: 'Roboto', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1.3;
+    word-break: break-word;
+    text-transform: uppercase;
+}
